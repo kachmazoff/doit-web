@@ -1,12 +1,28 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faCompass,
+  faBookOpen,
+} from "@fortawesome/free-solid-svg-icons";
+import styles from "./menu.module.css";
 
 export const Menu = () => {
   return (
-    <nav>
+    <nav className={styles.wrapper}>
       <ul>
-        <li>Главная</li>
-        <li>Навигатор</li>
-        <li>Мои дневники</li>
+        <li>
+          <FontAwesomeIcon icon={faHome} />
+          Главная
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faCompass} />
+          Навигатор
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faBookOpen} />
+          Мои дневники
+        </li>
       </ul>
     </nav>
   );
