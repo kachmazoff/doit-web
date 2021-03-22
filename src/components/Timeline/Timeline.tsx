@@ -1,8 +1,9 @@
 import React from "react";
 import { TimelineItem } from "./TimelineItem";
+import { TimelineItemModel } from "./TimelineItem/TimelineItem";
 
 interface TimelineProps {
-  items: object[];
+  items: TimelineItemModel[];
 }
 
 export const Timeline = ({ items }: TimelineProps) => {
