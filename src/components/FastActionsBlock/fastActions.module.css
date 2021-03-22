@@ -1,0 +1,21 @@
+.header {
+    padding: 6px 16px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.list {
+    padding: 0;
+}
+
+.list li {
+    padding: 12px 16px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.list li:hover {
+    /* background: rgba(0, 0, 0, 0.1); */
+    background-color: #0f98fb1a;
+    color: #0f98fb;
+}
