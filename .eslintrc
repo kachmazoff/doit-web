@@ -6,11 +6,14 @@
   },
   "extends": [
 		"plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/prop-types": 0
   },
   "env": {
     "browser": true,
