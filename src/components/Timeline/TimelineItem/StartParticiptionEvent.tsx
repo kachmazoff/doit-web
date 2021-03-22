@@ -9,9 +9,9 @@ export const StartParticiptionEvent = () => {
       <div>
         <span className={styles.userlink}>@kachmazoff</span> начал участвовать в
         челлендже
+        <span className={styles.timeInfo}> &#8226; 11:23 23.03.21</span>
       </div>
       <div className={styles.challengeTitle}>Сдохни или умри</div>
-      <div className={styles.timeInfo}>23.03.21</div>
       <BottomActions />
     </Block>
   );

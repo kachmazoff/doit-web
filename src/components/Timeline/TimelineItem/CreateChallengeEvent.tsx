@@ -8,13 +8,14 @@ export const CreateChallengeEvent = () => {
     <Block className={styles.commonWrapper}>
       <div>
         <span className={styles.userlink}>@kachmazoff</span> создал челлендж
+        <span className={styles.timeInfo}> &#8226; 11:23 23.03.21</span>
       </div>
       <div className={styles.challengeTitle}>Сдохни или умри</div>
       <div className={styles.challengeDescription}>
         Смотреть 10 часов без остановки видео "Сдохни или умри" с канала "Внутри
         Лапенко"
       </div>
-      <div className={styles.timeInfo}>23.03.21</div>
+
       <BottomActions />
     </Block>
   );
