@@ -1,13 +1,35 @@
 .wrapper {
+    align-items: center;
     background-color: white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
     height: 50px;
     position: sticky;
     top: 0;
     z-index: 999;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
-    text-transform: uppercase;
+    color: #0F98FB;
+    font-size: 1.6rem;
     font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.singnIn {
+    background-color: #0f98fb1a;
+    border: none;
+    border-radius: 4px;
+    color: #0f98fb;
+    padding: 2px 24px;
+}
+
+.singnIn:hover {
+    background-color: #0f98fb33;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }

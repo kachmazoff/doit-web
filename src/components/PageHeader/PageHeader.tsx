@@ -10,8 +10,10 @@ export const PageHeader = () => {
           <Col xs={2}>
             <span className={styles.logo}>doit</span>
           </Col>
-          <Col>notification</Col>
-          <Col xs={3}>Profile info</Col>
+          <Col></Col>
+          <Col xs={3} className={styles.right}>
+            <button className={styles.singnIn}>Войти</button>
+          </Col>
         </Row>
       </Container>
     </header>
