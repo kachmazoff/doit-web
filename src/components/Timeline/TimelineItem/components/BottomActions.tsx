@@ -6,10 +6,12 @@ import styles from "./styles.module.css";
 export const BottomActions = () => {
   return (
     <div className={styles.bottomActions}>
-      <FontAwesomeIcon icon={faHeart} style={{ marginRight: "5px" }} />
-      0
-      <FontAwesomeIcon icon={faCommentAlt} style={{ margin: "0 5px 0 20px" }} />
-      0
+      <span>
+        <FontAwesomeIcon icon={faHeart} style={{ marginRight: "5px" }} />0
+      </span>
+      <span>
+        <FontAwesomeIcon icon={faCommentAlt} style={{ margin: "0 5px" }} />0
+      </span>
     </div>
   );
 };

@@ -1,1 +1,3 @@
 .bottomActions { opacity: 0.25; }
+.bottomActions>span { margin-right: 20px; }
+.bottomActions svg {cursor: pointer;}
