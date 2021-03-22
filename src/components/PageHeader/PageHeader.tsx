@@ -12,6 +12,7 @@ export const PageHeader = () => {
           </Col>
           <Col></Col>
           <Col xs={3} className={styles.right}>
+            <span className={styles.username}>@kachmazoff</span>
             <button className={styles.singnIn}>Войти</button>
           </Col>
         </Row>
