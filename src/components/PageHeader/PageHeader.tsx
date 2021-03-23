@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { Button } from "../Button";
 import styles from "./pageHeader.module.css";
 
 export const PageHeader = () => {
@@ -13,7 +14,7 @@ export const PageHeader = () => {
           <Col></Col>
           <Col xs={3} className={styles.right}>
             <span className={styles.username}>@kachmazoff</span>
-            <button className={styles.singnIn}>Войти</button>
+            <Button className={styles.singnIn}>Войти</Button>
           </Col>
         </Row>
       </Container>
