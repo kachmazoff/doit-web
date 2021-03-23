@@ -9,14 +9,17 @@
     margin: 0;
 }
 
-.list li {
+.list li { list-style: none; }
+
+.action {
     padding: 12px 16px;
-    list-style: none;
     cursor: pointer;
+    display: block;
+    color: black;
 }
 
-.list li:hover {
-    /* background: rgba(0, 0, 0, 0.1); */
+.action:hover {
     background-color: #0f98fb1a;
     color: #0f98fb;
+    text-decoration: none;
 }
