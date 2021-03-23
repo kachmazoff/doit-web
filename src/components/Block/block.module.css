@@ -9,5 +9,5 @@
 .block_transparent {
     border-radius: 4px;
     margin: 15px 0 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
