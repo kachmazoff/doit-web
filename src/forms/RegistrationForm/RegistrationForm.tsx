@@ -7,7 +7,7 @@ import { Block, Button } from "@/components";
 const labelStyles = { margin: 0 };
 
 interface RegistrationFormProps {
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
 export const RegistrationForm = ({ onSubmit }: RegistrationFormProps) => {
@@ -21,7 +21,7 @@ export const RegistrationForm = ({ onSubmit }: RegistrationFormProps) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         setValidated(true);
-      } else {
+      } else if (!!onSubmit) {
         onSubmit(event);
       }
     },
