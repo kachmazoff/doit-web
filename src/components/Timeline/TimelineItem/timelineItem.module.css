@@ -1,0 +1,25 @@
+.commonWrapper {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.commonWrapper>div:not(:first-child) { margin-top: 5px; }
+.commonWrapper>div:not(:last-child) { margin-bottom: 5px; }
+
+.userlink {
+    color: #0F98FB;
+    cursor: pointer;
+}
+
+.userlink:hover {
+    text-decoration: underline;
+}
+
+.challengeTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.timeInfo {
+    opacity: 0.5;
+}

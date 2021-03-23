@@ -9,8 +9,9 @@
     "allowJs": true,
     "jsx": "react",
     "sourceMap": true,
-    "strict": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
     "downlevelIteration": true
   }
 }
