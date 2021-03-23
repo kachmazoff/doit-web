@@ -2,17 +2,7 @@ import React from "react";
 import { Block } from "@/components";
 import { StartParticiptionEvent } from "./StartParticiptionEvent";
 import { CreateChallengeEvent } from "./CreateChallengeEvent";
-
-type TimelineItemType =
-  | "CREATE_CHALLENGE"
-  | "ACCEPT_CHALLENGE"
-  | "ADD_NOTE"
-  | "ADD_SUGGESTION";
-
-export interface TimelineItemModel {
-  id: string;
-  type: TimelineItemType;
-}
+import { TimelineItemModel } from "./types";
 
 interface TimelineItemProps {
   model: TimelineItemModel;
