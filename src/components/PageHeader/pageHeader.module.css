@@ -16,6 +16,8 @@
     text-transform: uppercase;
 }
 
+.logo:hover { text-decoration: none; }
+
 .right {
     display: flex;
     align-items: center;
