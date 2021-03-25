@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -12,16 +13,22 @@ export const Menu = () => {
     <nav className={styles.wrapper}>
       <ul>
         <li>
-          <FontAwesomeIcon icon={faHome} />
-          Главная
+          <Link to="/" className={styles.link}>
+            <FontAwesomeIcon icon={faHome} />
+            Главная
+          </Link>
         </li>
         <li>
-          <FontAwesomeIcon icon={faCompass} />
-          Навигатор
+          <Link to="/explore" className={styles.link}>
+            <FontAwesomeIcon icon={faCompass} />
+            Навигатор
+          </Link>
         </li>
         <li>
-          <FontAwesomeIcon icon={faBookOpen} />
-          Мои дневники
+          <Link to="/own/participations" className={styles.link}>
+            <FontAwesomeIcon icon={faBookOpen} />
+            Мои дневники
+          </Link>
         </li>
       </ul>
     </nav>
