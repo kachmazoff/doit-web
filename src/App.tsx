@@ -7,6 +7,7 @@ import {
   CreateNotePage,
   HomePage,
   RegistrationPage,
+  NotFoundPage,
 } from "./pages";
 
 export const App = () => {
@@ -30,6 +31,7 @@ export const App = () => {
               />
               <Route path="/note_create" exact component={CreateNotePage} />
               <Route path="/" exact component={HomePage} />
+              <Route path="*" exact component={NotFoundPage} />
             </Switch>
           </Row>
         </Container>
