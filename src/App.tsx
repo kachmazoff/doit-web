@@ -2,7 +2,12 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { Block, Menu, PageHeader } from "./components";
-import { CreateChallengePage, HomePage, RegistrationPage } from "./pages";
+import {
+  CreateChallengePage,
+  CreateNotePage,
+  HomePage,
+  RegistrationPage,
+} from "./pages";
 
 export const App = () => {
   return (
@@ -23,6 +28,7 @@ export const App = () => {
                 exact
                 component={CreateChallengePage}
               />
+              <Route path="/note_create" exact component={CreateNotePage} />
               <Route path="/" exact component={HomePage} />
             </Switch>
           </Row>
