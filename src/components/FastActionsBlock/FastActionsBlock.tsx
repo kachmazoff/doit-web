@@ -13,7 +13,11 @@ export const FastActionsBlock = () => {
             Создать челлендж
           </Link>
         </li>
-        <li className={styles.action}>Добавить запись</li>
+        <li>
+          <Link to="/note_create" className={styles.action}>
+            Добавить запись
+          </Link>
+        </li>
       </ul>
     </Block>
   );
