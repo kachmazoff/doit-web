@@ -58,6 +58,11 @@ module.exports = {
     overlay: true,
     open: true,
     hot: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
