@@ -11,10 +11,18 @@ import {
 } from "./pages";
 
 export const App = () => {
+  const [username, setUsername] = React.useState("");
+
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    setUsername(user?.username);
+  }, []);
+
   return (
     <BrowserRouter>
       <div>
-        <PageHeader />
+        <PageHeader username={username} />
         <Container fluid="md">
           <Row>
             <Col xs={2}>
