@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { Block, Menu, PageHeader } from "./components";
 import {
@@ -40,7 +40,10 @@ export const App = () => {
               />
               <Route path="/challenge/:id" exact component={ChallengePage} />
               <Route path="/note_create" exact component={CreateNotePage} />
-              <Route path="/" exact component={HomePage} />
+              <Route path="/feed" component={HomePage} />
+              <Route path="/" exact>
+                <Redirect to="/feed" />
+              </Route>
               <Route path="*" exact component={NotFoundPage} />
             </Switch>
           </Row>
