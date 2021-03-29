@@ -1,0 +1,1 @@
+export { LoginFormMin } from "./LoginFormMin";
