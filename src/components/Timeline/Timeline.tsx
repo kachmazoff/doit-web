@@ -4,14 +4,19 @@ import { TimelineItemModel } from "./TimelineItem/TimelineItem";
 
 interface TimelineProps {
   items: TimelineItemModel[];
+  keyField: string;
 }
 
-export const Timeline = ({ items }: TimelineProps) => {
+export const Timeline = ({ items, keyField }: TimelineProps) => {
   return (
     <div>
       {items.map((item) => (
-        <TimelineItem key={item.id} model={item} />
+        <TimelineItem key={item[keyField]} model={item} />
       ))}
     </div>
   );
+};
+
+Timeline.defaultProps = {
+  keyField: "id",
 };
