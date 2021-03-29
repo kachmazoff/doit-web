@@ -8,6 +8,7 @@ import {
   HomePage,
   RegistrationPage,
   NotFoundPage,
+  ChallengePage,
 } from "./pages";
 
 export const App = () => {
@@ -37,6 +38,7 @@ export const App = () => {
                 exact
                 component={CreateChallengePage}
               />
+              <Route path="/challenge/:id" exact component={ChallengePage} />
               <Route path="/note_create" exact component={CreateNotePage} />
               <Route path="/" exact component={HomePage} />
               <Route path="*" exact component={NotFoundPage} />
