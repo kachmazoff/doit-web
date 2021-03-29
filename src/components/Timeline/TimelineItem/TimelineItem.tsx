@@ -2,17 +2,16 @@ import React from "react";
 import { Block } from "@/components";
 import { StartParticiptionEvent } from "./StartParticiptionEvent";
 import { CreateChallengeEvent } from "./CreateChallengeEvent";
-import { TimelineItemModel } from "./types";
-
-interface TimelineItemProps {
-  model: TimelineItemModel;
-}
+import { AddNoteEvent } from "./AddNoteEvent";
+import { TimelineItemProps } from "./types";
 
 export const TimelineItem = ({ model }: TimelineItemProps) => {
   if (model.type === "CREATE_CHALLENGE") {
-    return <CreateChallengeEvent />;
+    return <CreateChallengeEvent model={model} />;
   } else if (model.type === "ACCEPT_CHALLENGE") {
-    return <StartParticiptionEvent />;
+    return <StartParticiptionEvent model={model} />;
+  } else if (model.type === "ADD_NOTE") {
+    return <AddNoteEvent model={model} />;
   }
   return <Block>TimelineItem</Block>;
 };
