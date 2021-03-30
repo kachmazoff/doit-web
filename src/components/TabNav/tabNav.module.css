@@ -1,0 +1,13 @@
+.tab {
+    padding: 0.5rem 0px;
+    margin-right: 1rem;
+    color: black;
+}
+
+.tab:hover {
+    text-decoration: none;
+}
+
+.active {
+    border-bottom: 2px solid rgb(15, 152, 251);
+}

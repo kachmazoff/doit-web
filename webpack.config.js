@@ -1,7 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { DefinePlugin } = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const dotenv = require("dotenv");
+
+const devMode = process.env.NODE_ENV !== "production";
 
 const env = dotenv.config().parsed;
 
@@ -10,7 +13,19 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
   return prev;
 }, {});
 
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: "./public/index.html",
+  }),
+  new DefinePlugin(envKeys),
+];
+
+if (!devMode) {
+  plugins.push(new MiniCssExtractPlugin());
+}
+
 module.exports = {
+  // TODO: check conflicts with env (row 7)
   mode: "development",
   entry: "./src/index.tsx",
   output: {
@@ -27,7 +42,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
@@ -42,7 +57,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          "css-loader",
+        ],
         exclude: /\.module\.css$/,
       },
     ],
@@ -58,11 +76,11 @@ module.exports = {
     overlay: true,
     open: true,
     hot: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+      },
+    },
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-    new DefinePlugin(envKeys),
-  ],
+  plugins,
 };
