@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Route, Switch, Redirect, useRouteMatch, Link } from "react-router-dom";
+import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
 import { Button, Col } from "react-bootstrap";
 import { LoginFormMin } from "@/forms";
-import { FastActionsBlock, Block } from "@/components";
+import { FastActionsBlock, Block, TabNav } from "@/components";
 import { TimelineModule } from "@/modules";
 
 const logout = () => {
@@ -11,8 +11,27 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+const createTabsConfig = (url) => {
+  return [
+    {
+      url: `${url}`,
+      name: "Подписки",
+      exact: true,
+    },
+    {
+      url: `${url}/own`,
+      name: "Мои записи",
+    },
+  ];
+};
+
 export const HomePage = () => {
   const { path, url } = useRouteMatch();
+  const [tabsConfig, setTabsConfig] = React.useState([]);
+
+  React.useEffect(() => {
+    setTabsConfig(createTabsConfig(url));
+  }, [url]);
 
   const isLoggedIn = localStorage.getItem("user") !== null;
 
@@ -20,8 +39,7 @@ export const HomePage = () => {
     <>
       <Col>
         <Block style={{ padding: "0.5rem 1rem" }}>
-          <Link to={`${url}/personalized`}>Подписки</Link>
-          <Link to={`${url}/own`}>Мои записи</Link>
+          <TabNav config={tabsConfig} />
         </Block>
         <Switch>
           <Route path={`${path}/own`}>
@@ -36,7 +54,7 @@ export const HomePage = () => {
         </Switch>
       </Col>
       <Col xs={3}>
-        {!isLoggedIn ? (
+        {!isLoggedIn && (
           <LoginFormMin
             onSubmit={(data) => {
               const { email, password } = data.target.elements;
@@ -49,12 +67,14 @@ export const HomePage = () => {
               });
             }}
           />
-        ) : (
+        )}
+
+        <FastActionsBlock />
+        {isLoggedIn && (
           <Block>
             <Button onClick={logout}>Выйти</Button>
           </Block>
         )}
-        <FastActionsBlock />
       </Col>
     </>
   );
