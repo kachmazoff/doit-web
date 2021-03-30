@@ -26,7 +26,6 @@
 
 .username {
     font-size: 1rem;
-    padding-left: 16px;
 }
 
 .moreActionsButton {
@@ -45,4 +44,5 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    padding: 0 1rem;
 }
