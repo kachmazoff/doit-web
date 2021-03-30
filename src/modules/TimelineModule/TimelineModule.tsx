@@ -60,12 +60,18 @@ export const TimelineModule = ({ type }: { type: TimelineTypes }) => {
       {status === "loading" && <p>Загрузка</p>}
       {status === "failed" && <p>Ошибка</p>}
 
-      {status === "success" && (
-        <Timeline
-          items={timelineItems as TimelineItemModel[]}
-          keyField="index"
-        />
-      )}
+      {status === "success" &&
+        Array.isArray(timelineItems) &&
+        timelineItems.length > 0 && (
+          <Timeline
+            items={timelineItems as TimelineItemModel[]}
+            keyField="index"
+          />
+        )}
+
+      {status === "success" &&
+        Array.isArray(timelineItems) &&
+        timelineItems.length === 0 && <p>Нет ни одной записи</p>}
     </div>
   );
 };
