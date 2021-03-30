@@ -25,3 +25,8 @@
     color: #0f98fb;
     text-decoration: none;
 }
+
+.action>svg {
+    margin-right: 0.5rem;
+    opacity: 0.9;
+}
