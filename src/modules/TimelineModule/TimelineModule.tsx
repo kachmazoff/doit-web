@@ -8,17 +8,6 @@ const endpointConfig = {
   personalized: "/personalized",
 };
 
-const getHeaders = () => {
-  const token = localStorage.getItem("token");
-
-  const headers = {};
-  if (!!token) {
-    headers["Authorization"] = `Bearer ${token}`;
-  }
-
-  return headers;
-};
-
 type TimelineTypes = keyof typeof endpointConfig;
 
 const logout = () => {
@@ -28,10 +17,7 @@ const logout = () => {
 
 const getTimeline = (type: TimelineTypes) => {
   const endpoint = "/api/timeline" + endpointConfig[type];
-
-  const headers = getHeaders();
-
-  return axios.get(endpoint, { headers }).then((x) => x.data);
+  return axios.get(endpoint).then((x) => x.data);
 };
 
 export const TimelineModule = ({ type }: { type: TimelineTypes }) => {

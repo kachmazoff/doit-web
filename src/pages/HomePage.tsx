@@ -5,6 +5,7 @@ import { Button, Col } from "react-bootstrap";
 import { LoginFormMin } from "@/forms";
 import { FastActionsBlock, Block, TabNav } from "@/components";
 import { TimelineModule } from "@/modules";
+import { axiosConfig } from "@/api";
 
 const logout = () => {
   localStorage.removeItem("token");
@@ -40,6 +41,7 @@ export const HomePage = () => {
       <Col>
         <Block style={{ padding: "0.5rem 1rem" }}>
           <TabNav config={tabsConfig} />
+          {/* TODO: Add icon https://fontawesome.com/icons/filter?style=solid */}
         </Block>
         <Switch>
           <Route path={`${path}/own`}>
@@ -61,6 +63,7 @@ export const HomePage = () => {
               const body = { email: email.value, password: password.value };
 
               axios.post("/api/auth/login", body).then((x) => {
+                axiosConfig.setAuthHeader(x.data.token);
                 console.log(x.data);
                 localStorage.setItem("token", x.data.token);
                 localStorage.setItem("user", JSON.stringify(x.data.user));
