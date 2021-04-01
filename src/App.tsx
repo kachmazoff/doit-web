@@ -1,8 +1,10 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { Block, Menu, PageHeader } from "./components";
 import { AppRoutes } from "./pages";
+import { store } from "./store";
 
 export const App = () => {
   const [username, setUsername] = React.useState("");
@@ -14,8 +16,8 @@ export const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <div>
+    <Provider store={store}>
+      <BrowserRouter>
         <PageHeader username={username} />
         <Container fluid="md">
           <Row>
@@ -27,7 +29,7 @@ export const App = () => {
             <AppRoutes />
           </Row>
         </Container>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 };
