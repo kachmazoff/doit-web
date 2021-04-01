@@ -1,16 +1,11 @@
 import React from "react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
 import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
-import { Button, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { LoginFormMin } from "@/forms";
 import { FastActionsBlock, Block, TabNav } from "@/components";
 import { TimelineModule } from "@/modules";
-import { axiosConfig } from "@/api";
-
-const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-};
+import { loginAction } from "@/modules/AuthModule";
 
 const createTabsConfig = (url) => {
   return [
@@ -29,6 +24,7 @@ const createTabsConfig = (url) => {
 export const HomePage = () => {
   const { path, url } = useRouteMatch();
   const [tabsConfig, setTabsConfig] = React.useState([]);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     setTabsConfig(createTabsConfig(url));
@@ -59,20 +55,13 @@ export const HomePage = () => {
         {!isLoggedIn && (
           <LoginFormMin
             onSubmit={(data) => {
-              const { email, password } = data.target.elements;
-              const body = { email: email.value, password: password.value };
+              const email = data.target.elements.email.value;
+              const password = data.target.elements.password.value;
 
-              axios.post("/api/auth/login", body).then((x) => {
-                axiosConfig.setAuthHeader(x.data.token);
-                console.log(x.data);
-                localStorage.setItem("token", x.data.token);
-                localStorage.setItem("user", JSON.stringify(x.data.user));
-                document.location.reload();
-              });
+              dispatch(loginAction({ email, password }));
             }}
           />
         )}
-
         <FastActionsBlock />
       </Col>
     </>

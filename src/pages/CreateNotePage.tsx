@@ -13,7 +13,6 @@ export const CreateNotePage = () => {
 
     axios.get(endpoint).then((x) => {
       setParticipants(x.data);
-      console.log(x.data);
     });
   }, []);
 

@@ -10,11 +10,6 @@ const endpointConfig = {
 
 type TimelineTypes = keyof typeof endpointConfig;
 
-const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-};
-
 const getTimeline = (type: TimelineTypes) => {
   const endpoint = "/api/timeline" + endpointConfig[type];
   return axios.get(endpoint).then((x) => x.data);
@@ -33,11 +28,7 @@ export const TimelineModule = ({ type }: { type: TimelineTypes }) => {
         setStatus("success");
       })
       .catch((x: AxiosError) => {
-        console.error(x);
-        if (x.response.status === 401) {
-          logout();
-          setStatus("failed");
-        }
+        setStatus("failed");
       });
   }, [type]);
 

@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { App } from "./App";
 import { axiosConfig } from "./api";
 
-const token = localStorage.getItem("token");
-if (token !== null) {
-  axiosConfig.setAuthHeader(token);
-}
+// const token = localStorage.getItem("token");
+// if (token !== null) {
+//   axiosConfig.setAuthHeader(token);
+// }
 
-axiosConfig.setErrorInterceptor();
+// axiosConfig.setErrorInterceptor();
 
 ReactDOM.render(<App />, document.getElementById("root"));
