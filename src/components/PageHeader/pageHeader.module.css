@@ -28,17 +28,6 @@
     font-size: 1rem;
 }
 
-.moreActionsButton {
-    font-size: 2rem;
-    opacity: 0.3;
-    cursor: pointer;
-}
-
-.moreActionsButton:hover {
-    color: #0F98FB;
-    opacity: 1;
-}
-
 .authContainer {
     display: flex;
     align-items: center;

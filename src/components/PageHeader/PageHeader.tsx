@@ -1,9 +1,8 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../Button";
+import { Actions } from "./components";
 import styles from "./pageHeader.module.css";
 
 export const PageHeader = ({ username }) => {
@@ -21,9 +20,15 @@ export const PageHeader = ({ username }) => {
             {!!username ? (
               <div className={styles.authContainer}>
                 <span className={styles.username}>@{username}</span>
-                <FontAwesomeIcon
-                  icon={faCaretDown}
-                  className={styles.moreActionsButton}
+                <Actions
+                  onSelect={(eventKey) => {
+                    if (eventKey === "logout") {
+                      //logout
+                      localStorage.removeItem("token");
+                      localStorage.removeItem("user");
+                      document.location.reload();
+                    }
+                  }}
                 />
               </div>
             ) : (

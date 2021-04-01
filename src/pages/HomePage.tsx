@@ -67,17 +67,13 @@ export const HomePage = () => {
                 console.log(x.data);
                 localStorage.setItem("token", x.data.token);
                 localStorage.setItem("user", JSON.stringify(x.data.user));
+                document.location.reload();
               });
             }}
           />
         )}
 
         <FastActionsBlock />
-        {isLoggedIn && (
-          <Block>
-            <Button onClick={logout}>Выйти</Button>
-          </Block>
-        )}
       </Col>
     </>
   );
