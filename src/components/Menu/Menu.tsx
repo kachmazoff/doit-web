@@ -25,7 +25,7 @@ export const Menu = () => {
           </Link>
         </li> */}
         <li>
-          <Link to="/own/participations" className={styles.link}>
+          <Link to="/participations" className={styles.link}>
             <FontAwesomeIcon icon={faBookOpen} />
             Мои дневники
           </Link>

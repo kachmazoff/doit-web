@@ -5,6 +5,7 @@ import { CreateChallengePage } from "./CreateChallengePage";
 import { CreateNotePage } from "./CreateNotePage";
 import { HomePage } from "./HomePage";
 import { NotFoundPage } from "./NotFoundPage";
+import { OwnParticipationsPage } from "./OwnParticipationsPage";
 import { RegistrationPage } from "./RegistrationPage";
 
 export const AppRoutes = () => {
@@ -14,6 +15,7 @@ export const AppRoutes = () => {
       <Route path="/challenge_create" exact component={CreateChallengePage} />
       <Route path="/challenge/:id" exact component={ChallengePage} />
       <Route path="/note_create" exact component={CreateNotePage} />
+      <Route path="/participations" exact component={OwnParticipationsPage} />
       <Route path="/feed" component={HomePage} />
       <Route path="/" exact>
         <Redirect to="/feed" />
