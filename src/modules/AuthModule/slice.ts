@@ -5,7 +5,6 @@ export type AuthStatus = "init" | "loading" | "success" | "failed";
 export interface IAuthUserData {
   id: string;
   username: string;
-  email: string;
 }
 
 export interface AuthData {
