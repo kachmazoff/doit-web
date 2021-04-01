@@ -21,13 +21,24 @@ const AuthWrapperComponent: FC<Props> = ({
   children,
   tryLoadSession,
 }) => {
+  const [localStatus, setLocalStatus] = React.useState(status);
+
   React.useEffect(() => {
     if (status === "init") {
+      setLocalStatus("loading");
       tryLoadSession();
     } else if (status === "success") {
       // Call api for token validation
     }
+
+    if (status === "failed" || status === "success") {
+      setLocalStatus(status);
+    }
   }, [status]);
+
+  if (localStatus === "init" || localStatus === "loading") {
+    return <p>Загрузка</p>;
+  }
 
   return <>{children}</>;
 };

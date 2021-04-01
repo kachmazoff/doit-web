@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Block, Menu, PageHeader } from "./components";
 import { AppRoutes } from "./pages";
 import { store } from "./store";
+import { AuthWrapper } from "./modules/AuthModule";
 
 export const App = () => {
   const [username, setUsername] = React.useState("");
@@ -18,17 +19,19 @@ export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <PageHeader username={username} />
-        <Container fluid="md">
-          <Row>
-            <Col xs={2}>
-              <Block transparent>
-                <Menu />
-              </Block>
-            </Col>
-            <AppRoutes />
-          </Row>
-        </Container>
+        <AuthWrapper>
+          <PageHeader username={username} />
+          <Container fluid="md">
+            <Row>
+              <Col xs={2}>
+                <Block transparent>
+                  <Menu />
+                </Block>
+              </Col>
+              <AppRoutes />
+            </Row>
+          </Container>
+        </AuthWrapper>
       </BrowserRouter>
     </Provider>
   );
