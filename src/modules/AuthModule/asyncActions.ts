@@ -28,6 +28,20 @@ export const tryLoadSession = () => (dispatch: Function) => {
   }
 };
 
+export const checkAuth = () => (dispatch: Function) => {
+  const { clearAuthData } = actions;
+  return axios
+    .get("/api/auth/check")
+    .then((x) => {
+      return "success" as AuthStatus;
+    })
+    .catch((err) => {
+      logout();
+      dispatch(clearAuthData());
+      return "failed" as AuthStatus;
+    });
+};
+
 export const loginAction = ({ email, password }) => (dispatch: Function) => {
   const { setAuthData, setStatus, clearAuthData } = actions;
 
@@ -46,16 +60,9 @@ export const loginAction = ({ email, password }) => (dispatch: Function) => {
     });
 };
 
-export const checkAuth = () => (dispatch: Function) => {
+export const logoutAction = () => (dispatch: Function) => {
   const { clearAuthData } = actions;
-  return axios
-    .get("/api/auth/check")
-    .then((x) => {
-      return "success" as AuthStatus;
-    })
-    .catch((err) => {
-      logout();
-      dispatch(clearAuthData());
-      return "failed" as AuthStatus;
-    });
+
+  logout();
+  dispatch(clearAuthData());
 };
