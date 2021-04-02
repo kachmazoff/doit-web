@@ -1,17 +1,36 @@
 import React from "react";
-import { PageHeader } from "@/components";
 import { connect } from "react-redux";
+import { authSlice, logoutAction } from "@/modules/AuthModule";
+import { PageHeader } from "@/components";
 import { RootState } from "@/store";
-import { authSlice } from "@/modules/AuthModule";
 
 const mapStateToProps = (rootState: RootState) => ({
   userData: rootState[authSlice.name].userData,
 });
 
-type PageHeaderModuleProps = ReturnType<typeof mapStateToProps>;
-
-const PageHeaderComponent = ({ userData }: PageHeaderModuleProps) => {
-  return <PageHeader username={userData?.username} />;
+const mapDispatchToProps = {
+  logoutAction,
 };
 
-export const PageHeaderModule = connect(mapStateToProps)(PageHeaderComponent);
+type PageHeaderModuleProps = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
+
+const PageHeaderComponent = ({
+  userData,
+  logoutAction,
+}: PageHeaderModuleProps) => {
+  return (
+    <PageHeader
+      username={userData?.username}
+      onLogout={() => {
+        logoutAction();
+        document.location = "/";
+      }}
+    />
+  );
+};
+
+export const PageHeaderModule = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PageHeaderComponent);

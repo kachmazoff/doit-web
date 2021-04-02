@@ -13,16 +13,16 @@ export const App = () => (
     <BrowserRouter>
       <PageHeaderModule />
       <Container fluid="md">
-        <Row>
-          <Col xs={2}>
-            <Block transparent>
-              <Menu />
-            </Block>
-          </Col>
-          <AuthWrapper>
+        <AuthWrapper>
+          <Row>
+            <Col xs={2}>
+              <Block transparent>
+                <Menu />
+              </Block>
+            </Col>
             <AppRoutes />
-          </AuthWrapper>
-        </Row>
+          </Row>
+        </AuthWrapper>
       </Container>
     </BrowserRouter>
   </Provider>
