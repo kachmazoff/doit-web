@@ -18,12 +18,12 @@ export const Menu = () => {
             Главная
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link to="/explore" className={styles.link}>
             <FontAwesomeIcon icon={faCompass} />
             Навигатор
           </Link>
-        </li> */}
+        </li>
         <li>
           <Link to="/participations" className={styles.link}>
             <FontAwesomeIcon icon={faBookOpen} />
