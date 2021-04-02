@@ -1,7 +1,8 @@
 import React, { ReactNode, FC } from "react";
 import { connect } from "react-redux";
 import { RootState } from "@/store";
-import { tryLoadSession } from "./asyncActions";
+import { checkAuth, tryLoadSession } from "./asyncActions";
+import { actions } from "./slice";
 
 const mapStateToProps = ({ auth }: RootState) => ({
   status: auth.status,
@@ -9,11 +10,15 @@ const mapStateToProps = ({ auth }: RootState) => ({
 
 const mapDispatchToProps = {
   tryLoadSession,
+  checkAuth,
+  setAuthStatus: actions.setStatus,
 };
 
 export interface Props extends ReturnType<typeof mapStateToProps> {
   children: ReactNode;
   tryLoadSession: Function;
+  checkAuth: Function;
+  setAuthStatus: Function;
 }
 
 const AuthWrapperComponent: FC<Props> = ({
@@ -21,22 +26,13 @@ const AuthWrapperComponent: FC<Props> = ({
   children,
   tryLoadSession,
 }) => {
-  const [localStatus, setLocalStatus] = React.useState(status);
-
   React.useEffect(() => {
     if (status === "init") {
-      setLocalStatus("loading");
       tryLoadSession();
-    } else if (status === "success") {
-      // Call api for token validation
-    }
-
-    if (status === "failed" || status === "success") {
-      setLocalStatus(status);
     }
   }, [status]);
 
-  if (localStatus === "init" || localStatus === "loading") {
+  if (status === "init" || status === "loading") {
     return <p>Загрузка</p>;
   }
 
