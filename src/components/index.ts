@@ -5,3 +5,4 @@ export { FastActionsBlock } from "./FastActionsBlock";
 export { Button } from "./Button";
 export { Timeline, TimelineItemModel } from "./Timeline";
 export { TabNav } from "./TabNav";
+export { ParticipationsList } from "./ParticipationsList";
