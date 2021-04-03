@@ -7,7 +7,10 @@ import styles from "./timelineItem.module.css";
 export const CreateChallengeEvent = ({ model }: TimelineItemProps) => {
   return (
     <Block className={styles.commonWrapper}>
-      <div className={styles.challengeTitle}>{model.challenge.title}</div>
+      <h5 className={styles.challengeTitle}>
+        <span className={styles.new}>new</span>
+        {model.challenge.title}
+      </h5>
       {!!model.challenge.body && (
         <div className={styles.challengeDescription}>
           {model.challenge.body}
