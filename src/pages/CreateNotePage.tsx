@@ -20,7 +20,7 @@ export const CreateNotePage = () => {
     const endpoint = `/api/participants/${formData.participant_id}/notes`;
 
     axios.post(endpoint, formData).then((x) => {
-      console.log(x.data);
+      history.back();
     });
   }, []);
 
