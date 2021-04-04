@@ -1,11 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { LoginFormMin } from "@/forms";
 import { FastActionsBlock, Block, TabNav } from "@/components";
 import { TimelineModule } from "@/modules";
-import { loginAction } from "@/modules/AuthModule";
+import { getIsAuthenticated, loginAction } from "@/modules/AuthModule";
 
 const createTabsConfig = (url) => {
   return [
@@ -23,14 +23,13 @@ const createTabsConfig = (url) => {
 
 export const HomePage = () => {
   const { path, url } = useRouteMatch();
+  const isLoggedIn = useSelector(getIsAuthenticated);
   const [tabsConfig, setTabsConfig] = React.useState([]);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     setTabsConfig(createTabsConfig(url));
   }, [url]);
-
-  const isLoggedIn = localStorage.getItem("user") !== null;
 
   return (
     <>
@@ -62,7 +61,7 @@ export const HomePage = () => {
             }}
           />
         )}
-        <FastActionsBlock />
+        {isLoggedIn && <FastActionsBlock />}
       </Col>
     </>
   );
