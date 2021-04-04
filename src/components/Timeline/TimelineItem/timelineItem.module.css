@@ -8,7 +8,7 @@
 
 .challengeTitle { font-size: 1.125rem; }
 
-.noteBody { font-size: 1rem; }
+.noteBody { font-size: 1rem; line-height: 1.3; }
 
 .attachedIcon {
     opacity: 0.5;
