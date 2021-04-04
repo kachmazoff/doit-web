@@ -1,0 +1,7 @@
+.statusMessage {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.5;
+}

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { Timeline, TimelineItemModel } from "@/components";
+import { StatusMessage, StatusType } from "./StatusMessage";
 
 const endpointConfig = {
   common: "/",
@@ -16,7 +17,7 @@ const getTimeline = (type: TimelineTypes) => {
 };
 
 export const TimelineModule = ({ type }: { type: TimelineTypes }) => {
-  const [status, setStatus] = React.useState("loading");
+  const [status, setStatus] = useState<StatusType>("loading");
   const [timelineItems, setTimelineItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -32,23 +33,15 @@ export const TimelineModule = ({ type }: { type: TimelineTypes }) => {
       });
   }, [type]);
 
-  return (
-    <div>
-      {status === "loading" && <p>Загрузка</p>}
-      {status === "failed" && <p>Ошибка</p>}
+  if (
+    status === "success" &&
+    Array.isArray(timelineItems) &&
+    timelineItems.length > 0
+  ) {
+    return (
+      <Timeline items={timelineItems as TimelineItemModel[]} keyField="index" />
+    );
+  }
 
-      {status === "success" &&
-        Array.isArray(timelineItems) &&
-        timelineItems.length > 0 && (
-          <Timeline
-            items={timelineItems as TimelineItemModel[]}
-            keyField="index"
-          />
-        )}
-
-      {status === "success" &&
-        Array.isArray(timelineItems) &&
-        timelineItems.length === 0 && <p>Нет ни одной записи</p>}
-    </div>
-  );
+  return <StatusMessage status={status} />;
 };
