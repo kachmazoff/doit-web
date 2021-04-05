@@ -5,12 +5,38 @@ import { Block, Button } from "@/components";
 // TODO: use Formik (https://react-bootstrap.github.io/components/forms/#forms-validation-libraries)
 
 const labelStyles = { margin: 0 };
+const fields = [
+  "body",
+  "hideAuthor",
+  "participants_type",
+  "title",
+  "visible_type",
+];
 
-export const ChallengeForm = () => {
+export const ChallengeForm = ({ onSubmit }: { onSubmit: Function }) => {
+  const onSubmitHandler = React.useCallback(
+    (event) => {
+      event.preventDefault();
+      const { elements } = event.target;
+
+      const data: { [key: string]: string } = {};
+      fields.forEach((x) => {
+        if (x === "hideAuthor") {
+          data["show_author"] = !elements[x].checked;
+          return;
+        }
+        data[x] = elements[x].value;
+      });
+
+      onSubmit(data);
+    },
+    [onSubmit]
+  );
+
   return (
     <>
       <h2 style={{ marginTop: "1rem" }}>Создание челленджа</h2>
-      <Form>
+      <Form onSubmit={onSubmitHandler}>
         <h4 style={{ marginTop: "1rem" }}>Общая информация</h4>
         <Block style={{ padding: "6px 16px" }}>
           <Form.Row className="mb-3 mt-1">
@@ -30,10 +56,10 @@ export const ChallengeForm = () => {
             <Col>
               <Form.Label style={labelStyles}>Описание</Form.Label>
               <Form.Control
-                id="description"
+                id="body"
                 placeholder="Придумайте описание вашего челленджа, чтоб другие пользователи могли понять, в чём его суть"
                 type="text"
-                name="description"
+                name="body"
                 required
                 as="textarea"
                 style={{ minHeight: "150px", resize: "none" }}
@@ -42,7 +68,7 @@ export const ChallengeForm = () => {
           </Form.Row>
         </Block>
 
-        <h4 style={{ marginTop: "1rem" }}>Настройки</h4>
+        <h4 style={{ marginTop: "1rem" }}>Настройки приватности</h4>
         <Block style={{ padding: "6px 16px" }}>
           <Form.Group className="mb-3 mt-1">
             <Form.Row>
@@ -50,7 +76,7 @@ export const ChallengeForm = () => {
                 <Form.Label style={labelStyles}>Уровень видимости</Form.Label>
                 <Form.Control
                   as="select"
-                  name="visibilityType"
+                  name="visible_type"
                   defaultValue="solo"
                 >
                   <option value="public">Открытый</option>
@@ -70,7 +96,7 @@ export const ChallengeForm = () => {
               <Form.Label style={labelStyles}>Тип исполнителей</Form.Label>
               <Form.Control
                 as="select"
-                name="participantsType"
+                name="participants_type"
                 defaultValue="solo"
               >
                 <option value="solo">Одиночки</option>
@@ -80,7 +106,7 @@ export const ChallengeForm = () => {
             </Col>
           </Form.Row>
 
-          <Form.Row className="mb-3">
+          {/* <Form.Row className="mb-3">
             <Col xs={5}>
               <Form.Label style={labelStyles}>Доступ к выполнению</Form.Label>
               <Form.Control as="select" name="accessType" defaultValue="open">
@@ -88,7 +114,7 @@ export const ChallengeForm = () => {
                 <option value="close">Открыт только для меня</option>
               </Form.Control>
             </Col>
-          </Form.Row>
+          </Form.Row> */}
 
           <Form.Group className="mb-3" controlId="hideAuthor">
             <Form.Check

@@ -1,0 +1,21 @@
+.commonWrapper {
+    padding: 12px 16px 6px;
+    font-size: 14px;
+}
+
+.commonWrapper>div:not(:first-child) { margin-top: 5px; }
+.commonWrapper>div:not(:last-child) { margin-bottom: 5px; }
+
+.challengeTitle { font-size: 1.125rem; }
+
+.participant {
+    /* background-color: rgba(255, 0, 0, 0.5); */
+    background-color: #0F98FB;
+    border-radius: 10px;
+    
+    margin-right: 0.5rem;
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}

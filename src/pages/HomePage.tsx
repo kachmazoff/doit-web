@@ -1,15 +1,11 @@
 import React from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
-import { Button, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { LoginFormMin } from "@/forms";
 import { FastActionsBlock, Block, TabNav } from "@/components";
 import { TimelineModule } from "@/modules";
-
-const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-};
+import { getIsAuthenticated, loginAction } from "@/modules/AuthModule";
 
 const createTabsConfig = (url) => {
   return [
@@ -27,26 +23,27 @@ const createTabsConfig = (url) => {
 
 export const HomePage = () => {
   const { path, url } = useRouteMatch();
+  const isLoggedIn = useSelector(getIsAuthenticated);
   const [tabsConfig, setTabsConfig] = React.useState([]);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     setTabsConfig(createTabsConfig(url));
   }, [url]);
-
-  const isLoggedIn = localStorage.getItem("user") !== null;
 
   return (
     <>
       <Col>
         <Block style={{ padding: "0.5rem 1rem" }}>
           <TabNav config={tabsConfig} />
+          {/* TODO: Add icon https://fontawesome.com/icons/filter?style=solid */}
         </Block>
         <Switch>
           <Route path={`${path}/own`}>
-            <TimelineModule type="own" />
+            <TimelineModule type="common" />
           </Route>
           <Route path={path} exact>
-            <TimelineModule type="personalized" />
+            <TimelineModule type="subs" />
           </Route>
           <Route path="*" exact>
             <Redirect to={path} />
@@ -57,24 +54,14 @@ export const HomePage = () => {
         {!isLoggedIn && (
           <LoginFormMin
             onSubmit={(data) => {
-              const { email, password } = data.target.elements;
-              const body = { email: email.value, password: password.value };
+              const email = data.target.elements.email.value;
+              const password = data.target.elements.password.value;
 
-              axios.post("/api/auth/login", body).then((x) => {
-                console.log(x.data);
-                localStorage.setItem("token", x.data.token);
-                localStorage.setItem("user", JSON.stringify(x.data.user));
-              });
+              dispatch(loginAction({ email, password }));
             }}
           />
         )}
-
-        <FastActionsBlock />
-        {isLoggedIn && (
-          <Block>
-            <Button onClick={logout}>Выйти</Button>
-          </Block>
-        )}
+        {isLoggedIn && <FastActionsBlock />}
       </Col>
     </>
   );

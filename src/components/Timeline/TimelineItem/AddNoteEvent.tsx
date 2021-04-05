@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLevelUpAlt } from "@fortawesome/free-solid-svg-icons";
 import { Block } from "@/components";
@@ -16,8 +17,13 @@ export const AddNoteEvent = ({ model }: TimelineItemProps) => {
       />
       <div className={styles.noteBody}>{model.note.body}</div>
       <div style={{ opacity: "0.7" }}>
-        <FontAwesomeIcon icon={faLevelUpAlt} className={styles.attachedIcon} />
-        {model.challenge.title}
+        <Link to={`/participant/${model.participant.id}`}>
+          <FontAwesomeIcon
+            icon={faLevelUpAlt}
+            className={styles.attachedIcon}
+          />
+          {model.challenge.title}
+        </Link>
       </div>
       <BottomActions />
     </Block>

@@ -26,18 +26,6 @@
 
 .username {
     font-size: 1rem;
-    padding-left: 16px;
-}
-
-.moreActionsButton {
-    font-size: 2rem;
-    opacity: 0.3;
-    cursor: pointer;
-}
-
-.moreActionsButton:hover {
-    color: #0F98FB;
-    opacity: 1;
 }
 
 .authContainer {
@@ -45,4 +33,5 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    padding: 0 1rem;
 }
