@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-import styles from "./timelineModule.module.css";
+import styles from "./statusMessage.module.css";
 
 const config = {
   loading: (

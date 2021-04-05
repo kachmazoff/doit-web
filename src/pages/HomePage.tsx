@@ -40,10 +40,10 @@ export const HomePage = () => {
         </Block>
         <Switch>
           <Route path={`${path}/own`}>
-            <TimelineModule type="own" />
+            <TimelineModule type="common" />
           </Route>
           <Route path={path} exact>
-            <TimelineModule type="personalized" />
+            <TimelineModule type="subs" />
           </Route>
           <Route path="*" exact>
             <Redirect to={path} />

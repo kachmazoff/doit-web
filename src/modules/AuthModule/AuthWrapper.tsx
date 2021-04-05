@@ -1,6 +1,7 @@
 import React, { ReactNode, FC } from "react";
 import { connect } from "react-redux";
 import { RootState } from "@/store";
+import { StatusMessage } from "@/components";
 import { checkAuth, tryLoadSession } from "./asyncActions";
 import { actions } from "./slice";
 
@@ -33,7 +34,7 @@ const AuthWrapperComponent: FC<Props> = ({
   }, [status]);
 
   if (status === "init" || status === "loading") {
-    return <p>Загрузка</p>;
+    return <StatusMessage status="loading" />;
   }
 
   return <>{children}</>;

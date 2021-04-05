@@ -6,3 +6,5 @@ export { Button } from "./Button";
 export { Timeline, TimelineItemModel } from "./Timeline";
 export { TabNav } from "./TabNav";
 export { ParticipationsList } from "./ParticipationsList";
+export { ChallengesList } from "./ChallengesList";
+export { StatusMessage } from "./StatusMessage";
