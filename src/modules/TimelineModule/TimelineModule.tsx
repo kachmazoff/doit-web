@@ -40,7 +40,6 @@ const getTimelineWithFilters = (filters: TimelineFilters) => {
   return axios.get(endpoint).then((x) => x.data);
 };
 
-// export const TimelineModule = ({ type }: { type: TimelineTypes }) => {
 export const TimelineModule = (filters: TimelineFilters) => {
   const [status, setStatus] = useState<StatusType>("loading");
   const [timelineItems, setTimelineItems] = React.useState([]);
